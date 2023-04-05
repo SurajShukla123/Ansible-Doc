@@ -1,4 +1,3 @@
 # Ansible-Doc
 
-I have created this repo for future referance that I have learnt, In this repo I have lernt different ansible tasks and created note for that as well.
-In this repo there are 17 files where I have perform different Ansible operatin.
+"I have created this repository for future reference of what I have learned. In this repository, I have learned different Ansible tasks and created notes for each of them. There are 17 files in this repository where I have performed various Ansible operations.
