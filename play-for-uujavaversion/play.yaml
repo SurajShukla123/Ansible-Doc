@@ -1,0 +1,37 @@
+---
+- name: Remove unused Java versions
+  hosts: all
+  become: yes
+
+  vars:
+    unused_java_versions:
+      - java-9
+      - java-8
+      - java-3
+
+  tasks:
+    - name: Uninstall unused Java versions (apt)
+      apt:
+        name: "{{ item }}"
+        state: absent
+      with_items: "{{ unused_java_versions }}"
+      when: "'{{ item }}' in ansible_facts.packages"
+      become_method: sudo
+
+    - name: Uninstall unused Java versions (yum)
+      yum:
+        name: "{{ item }}"
+        state: absent
+      with_items: "{{ unused_java_versions }}"
+      when: "'{{ item }}' in ansible_facts.packages"
+      become_method: sudo
+
+    - name: Restart services that depend on Java
+      systemd:
+        name: "{{ item }}"
+        state: restarted
+      with_items:
+        - tomcat
+        - jenkins
+      when: "'{{ item }}' in ansible_facts.services"
+
