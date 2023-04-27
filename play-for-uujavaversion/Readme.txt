@@ -1,4 +1,4 @@
-This ia a ansible playbook for removing unused java version fro hosts
+This is a ansible playbook for removing unused java version form multiple hosts
 
 To run the Ansible playbook on your hosts, you'll need to do the following:
 
